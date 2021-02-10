@@ -1,4 +1,6 @@
 from emodpy_malaria.config import set_team_defaults, set_species, get_species_params
+from emod_api.config import default_from_schema_no_validation
+
 from jsuresh_helpers.running_dtk import set_executable, add_params_csv_to_dtk_config_builder
 from jsuresh_helpers.uncategorized import load_csv_into_dictionary
 from jsuresh_helpers.windows_filesystem import get_dropbox_location
@@ -14,8 +16,21 @@ params_csv_filename = input_folder + "params.csv"
 def set_ento(config):
     set_species(config, ["arabiensis", "funestus"])
 
-    # set_species_param #fixme Asking Jonathan to make this function for me
+    # Set up larval habitats:
+    lhm = default_from_schema_no_validation.schema_to_config_subnode(manifest.schema_file, ["idmTypes","idmType:VectorHabitat"])
+    lhm.parameters.Max_Larval_Capacity = 1e10
+    lhm.parameters.Vector_Habitat_Type = "TEMPORARY_RAINFALL"
+    # lhm.parameters.finalize()
+    config.get_species_params(config, "arabiensis").Larval_Habitat_Types.append( lhm.parameters )
 
+    lhm = default_from_schema_no_validation.schema_to_config_subnode(manifest.schema_file, ["idmTypes","idmType:VectorHabitat"])
+    lhm.parameters.Max_Larval_Capacity = 1e10
+    lhm.parameters.Vector_Habitat_Type = "WATER_VEGETATION"
+    # lhm.parameters.finalize()
+    config.get_species_params(config, "funestus").Larval_Habitat_Types.append( lhm.parameters )
+
+
+    # set_species_param #fixme Asking Jonathan to make this function for me
 
     '''
 
@@ -32,7 +47,7 @@ def set_ento(config):
 
 
 def set_project_specific_params(config):
-    config.parameters.Num_Cores = 2
+    # config.parameters.Num_Cores = 2  #ERROR: this needs to be done in platform creation
     config.parameters.Climate_Model = "CLIMATE_BY_DATA"
     # config.parameters.Enable_Vector_Migration = 1
 

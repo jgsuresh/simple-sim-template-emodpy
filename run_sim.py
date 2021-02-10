@@ -5,17 +5,20 @@ from idmtools.builders import SimulationBuilder
 from idmtools.core.platform_factory import Platform
 
 import manifest
+import params
+
 from idmtools.entities.experiment import Experiment
 from interventions import build_campaign_with_standard_events
 from setup_sim import build_project_config
+from sweeps import update_sim_bic, update_sim_random_seed
 
-platform = Platform("SLURM")
+platform = Platform("SLURM") #, num_cores=params.num_cores)
 
 print("Creating EMODTask (from files)...")
 
 def build_demographics():
     import emod_api.demographics.Demographics as Demographics
-    demo = Demographics.from_file("demographics.json")
+    demo = Demographics.from_file(manifest.demographics_file_path)
     return demo
 
 
@@ -34,7 +37,7 @@ def create_and_submit_experiment():
 
     # Create simulation sweep with builder
     builder = SimulationBuilder()
-    # builder.add_sweep_definition( update_sim_random_seed, range(params.nSims) )
+    builder.add_sweep_definition(update_sim_random_seed, range(3))
 
     # create experiment from builder
     print( f"Prompting for COMPS creds if necessary..." )
@@ -63,8 +66,8 @@ def create_and_submit_experiment():
 
 if __name__ == "__main__":
     # TBD: user should be allowed to specify (override default) erad_path and input_path from command line
-    # plan = EradicationBambooBuilds.MALARIA_LINUX
-    plan = EradicationBambooBuilds.MALARIA_WIN
+    plan = EradicationBambooBuilds.MALARIA_LINUX
+    # plan = EradicationBambooBuilds.MALARIA_WIN
     print("Retrieving Eradication and schema.json from Bamboo...")
     get_model_files(plan, manifest)
     print("...done.")
