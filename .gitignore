@@ -2,7 +2,7 @@
 *.log
 *.data
 *.csv
-*.json
+#*.json
 *.png
 *.pdf
 *.mp4

@@ -1,0 +1,122 @@
+{
+   "Nodes": [
+      {
+         "NodeID": 1,
+         "NodeAttributes": {
+            "Latitude": -16.620296345399407,
+            "Longitude": 28.084976306019158,
+            "InitialPopulation": 1000,
+            "Id": 1,
+            "FacilityName": "1",
+            "BirthRate": 0.1044684,
+            "LarvalHabitatMultiplier": [
+               {
+                  "Factor": 1.0,
+                  "Habitat": "LINEAR_SPLINE",
+                  "Species": "arabiensis"
+               },
+               {
+                  "Factor": 1.0,
+                  "Habitat": "LINEAR_SPLINE",
+                  "Species": "funestus"
+               }
+            ]
+         }
+      }
+   ],
+   "Defaults": {
+      "IndividualAttributes": {
+         "MortalityDistribution": {
+            "NumDistributionAxes": 2,
+            "AxisNames": [
+               "gender",
+               "age"
+            ],
+            "AxisUnits": [
+               "male=0,female=1",
+               "years"
+            ],
+            "AxisScaleFactors": [
+               1,
+               365
+            ],
+            "NumPopulationGroups": [
+               2,
+               1
+            ],
+            "PopulationGroups": [
+               [
+                  0,
+                  1
+               ],
+               [
+                  0
+               ]
+            ],
+            "ResultUnits": "annual deaths per 1000 individuals",
+            "ResultScaleFactor": 2.74e-06,
+            "ResultValues": [
+               [
+                  38.131
+               ],
+               [
+                  38.131
+               ]
+            ]
+         },
+         "AgeDistributionFlag": 3,
+         "AgeDistribution1": 0.0001068,
+         "PrevalenceDistributionFlag": 1,
+         "AgeDistribution2": 0,
+         "PrevalenceDistribution1": 0.13,
+         "PrevalenceDistribution2": 0.15,
+         "RiskDistributionFlag": 3,
+         "RiskDistribution1": 1,
+         "RiskDistribution2": 0,
+         "MigrationHeterogeneityDistribution1": 1,
+         "ImmunityDistributionFlag": 0,
+         "MigrationHeterogeneityDistributionFlag": 0,
+         "ImmunityDistribution1": 1,
+         "MigrationHeterogeneityDistribution2": 0,
+         "ImmunityDistribution2": 0
+      },
+      "NodeAttributes": {
+         "Urban": 0,
+         "AbovePoverty": 0.5,
+         "Region": 1,
+         "Seaport": 0,
+         "Airport": 0,
+         "Altitude": 0,
+         "InitialPopulation": 1000
+      },
+      "IndividualProperties": [
+         {
+            "Property": "RiskGroup",
+            "Values": [
+               "R1",
+               "R2",
+               "R3",
+               "R4",
+               "R5",
+               "R6"
+            ],
+            "Initial_Distribution": [
+               0.1,
+               0.2,
+               0.2,
+               0.2,
+               0.2,
+               0.1
+            ]
+         }
+      ]
+   },
+   "Metadata": {
+      "Author": "idm",
+      "Tool": "dtk-tools",
+      "IdReference": "Custom user",
+      "DateCreated": "2018-08-17 17:52:00.134708",
+      "NodeCount": 1,
+      "Resolution": 30
+   }
+}
