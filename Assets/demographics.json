@@ -21,6 +21,28 @@
       }
     ]
    }
+  },
+  {
+   "NodeID": 2,
+   "NodeAttributes": {
+    "Latitude": -16.620296345399407,
+    "Longitude": 28.084976306019158,
+    "InitialPopulation": 1000,
+    "FacilityName": "2",
+    "BirthRate": 0.1044684,
+    "LarvalHabitatMultiplier": [
+     {
+      "Factor": 1.0,
+      "Habitat": "LINEAR_SPLINE",
+      "Species": "arabiensis"
+     },
+     {
+      "Factor": 1.0,
+      "Habitat": "LINEAR_SPLINE",
+      "Species": "funestus"
+     }
+    ]
+   }
   }
  ],
  "Defaults": {
@@ -89,7 +111,7 @@
    "InitialPopulation": 1000
   },
   "IndividualProperties": [{
-    "Property": "RiskGroup",
+    "Property": "Risk",
     "Values": ["R1","R2","R3","R4","R5","R6"],
     "Initial_Distribution": [0.1,0.2,0.2,0.2,0.2,0.1]
   }]
@@ -99,7 +121,7 @@
   "Tool": "dtk-tools",
   "IdReference": "Custom user",
   "DateCreated": "2018-08-17 17:52:00.134708",
-  "NodeCount": 1,
+  "NodeCount": 2,
   "Resolution": 30
  }
 }

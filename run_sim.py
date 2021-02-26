@@ -38,6 +38,7 @@ def create_and_submit_experiment():
     # Create simulation sweep with builder
     builder = SimulationBuilder()
     builder.add_sweep_definition(update_sim_random_seed, range(3))
+    # to run a single sim without sweep: https://docs.idmod.org/projects/idmtools/en/latest/cookbook/experiments.html
 
     # create experiment from builder
     print( f"Prompting for COMPS creds if necessary..." )

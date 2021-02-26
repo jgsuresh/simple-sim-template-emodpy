@@ -2,7 +2,7 @@
 *.log
 *.data
 *.csv
-#*.json
+*.json
 *.png
 *.pdf
 *.mp4
@@ -11,6 +11,7 @@
 # Binary
 *.exe
 *.dll
+*Eradication
 
 # PyCharm
 /.idea
