@@ -107,6 +107,46 @@ def add_simple_rcd(campaign):
 
     campaign.add(simple_rcd_event)
 
+def add_simple_hs(campaign,
+                  u5_hs_rate,
+                  nodeIDs=None):
+    o5_hs_rate = u5_hs_rate * 0.5
+
+    def create_target_list(u5_hs_rate, o5_hs_rate):
+        return [{'trigger': 'NewClinicalCase',
+                 'coverage': u5_hs_rate,
+                 'agemin': 0,
+                 'agemax': 5,
+                 'seek': 1,
+                 'rate': 0.3},
+                {'trigger': 'NewClinicalCase',
+                 'coverage': o5_hs_rate,
+                 'agemin': 5,
+                 'agemax': 100,
+                 'seek': 1,
+                 'rate': 0.3},
+                {'trigger': 'NewSevereCase',
+                 'coverage': 0.9,
+                 'agemin': 0,
+                 'agemax': 5,
+                 'seek': 1,
+                 'rate': 0.5},
+                {'trigger': 'NewSevereCase',
+                 'coverage': 0.8,
+                 'agemin': 5,
+                 'agemax': 100,
+                 'seek': 1,
+                 'rate': 0.5}]
+
+    hs_event = add_health_seeking(campaign,
+                                  nodeIDs=nodeIDs,
+                                  start_day=1,
+                                  targets=create_target_list(u5_hs_rate, o5_hs_rate),
+                                  drug=['Artemether', 'Lumefantrine'])
+
+    campaign.add_event(hs_event)
+
+
 def change_working_men_ips(campaign):
     # Initialize everyone as being at home:
     change_individual_property(campaign,
@@ -303,8 +343,8 @@ def add_standard_interventions(campaign):
     add_drug_interventions(campaign)
     add_simple_rcd(campaign)
 
-
-    # Test this once they have been translated over to emodpy
+    # Test these once they have been translated over to emodpy
+    # add_simple_hs(campaign)
     # change_working_men_ips(campaign)
     # add_complex_rcd(campaign)
     # recurring_outbreak_as_importation(campaign)
