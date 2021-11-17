@@ -4,8 +4,6 @@ nsims = 3
 
 # Paths
 
+# EP4 = Embedded Python Pre and Post Processing
 my_ep4_assets=None
 #requirements = "./requirements.txt"
-
-
-

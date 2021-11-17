@@ -5,6 +5,7 @@ import numpy as np
 
 import emod_api.campaign as campaign
 import emod_api.interventions.outbreak as outbreak
+from emodpy_malaria.interventions.add_treatment_seeking import add_health_seeking
 from emodpy_malaria.interventions.bednet import Bednet
 
 import manifest
@@ -345,6 +346,7 @@ def add_standard_interventions(campaign):
 
     # Test these once they have been translated over to emodpy
     # add_simple_hs(campaign)
+    # add_health_seeking()
     # change_working_men_ips(campaign)
     # add_complex_rcd(campaign)
     # recurring_outbreak_as_importation(campaign)

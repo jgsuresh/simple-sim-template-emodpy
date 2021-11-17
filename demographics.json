@@ -91,7 +91,7 @@
       },
       "IndividualProperties": [
          {
-            "Property": "RiskGroup",
+            "Property": "Risk",
             "Values": [
                "R1",
                "R2",
